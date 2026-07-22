@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guestloop-fr.netlify.app/sitemap.xml

@@ -1,14 +1,64 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import {
+  absoluteUrl,
+  siteDescription,
+  siteName,
+  siteTitle,
+  siteUrl,
+  socialImage,
+} from "./seo";
 
 export const metadata: Metadata = {
-  title: "Guest Loop - Fidelisation pour restaurants",
-  description:
-    "Landing page Guest Loop pour aider les restaurants a fideliser leurs clients avec QR code, recompenses digitales et campagnes de relance.",
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: siteUrl,
+    siteName,
+    locale: "fr_FR",
+    type: "website",
+    images: [
+      {
+        url: absoluteUrl(socialImage),
+        width: 1200,
+        height: 783,
+        alt: "Tableau de bord Guest Loop pour suivre les clients, visites et récompenses",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: [absoluteUrl(socialImage)],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

@@ -1,11 +1,64 @@
-const calendlyUrl = "https://calendly.com/overside/30min";
-const restaurantLoginUrl = "https://guestloop.overside360.fr/";
+import {
+  absoluteUrl,
+  calendlyUrl,
+  commerceLoginUrl,
+  oversideName,
+  oversideUrl,
+  siteDescription,
+  siteName,
+  siteUrl,
+} from "./seo";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteName,
+    url: siteUrl,
+    inLanguage: "fr-FR",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: oversideName,
+    url: oversideUrl,
+    brand: {
+      "@type": "Brand",
+      name: siteName,
+      url: siteUrl,
+      logo: absoluteUrl("/favicon.svg"),
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: siteName,
+    description: siteDescription,
+    serviceType:
+      "Programme de fidélisation digitale pour commerces de proximité",
+    areaServed: "France",
+    provider: {
+      "@type": "Organization",
+      name: oversideName,
+      url: oversideUrl,
+    },
+    brand: {
+      "@type": "Brand",
+      name: siteName,
+      url: siteUrl,
+    },
+    audience: {
+      "@type": "BusinessAudience",
+      audienceType: "Restaurants, boutiques et commerces de proximité",
+    },
+  },
+];
 
 const proofItems = [
   {
     value: "50+",
     label: "restaurants déjà inscrits en France",
-    detail: "Une base réelle pour lancer une fidélisation locale crédible.",
+    detail: "Une base réelle pour déployer la fidélisation dans les commerces de proximité.",
   },
   {
     value: "Des milliers",
@@ -29,7 +82,7 @@ const benefits = [
   {
     icon: "QR",
     title: "Inscription en quelques secondes",
-    text: "Un QR code sur table, comptoir, ticket ou vitrine. Le client rejoint votre programme sans télécharger d'application.",
+    text: "Un QR code sur table, comptoir, ticket, menu ou vitrine. Le client rejoint votre programme sans télécharger d'application.",
   },
   {
     icon: "CRM",
@@ -39,7 +92,7 @@ const benefits = [
   {
     icon: "GO",
     title: "Des avis et retours mieux déclenchés",
-    text: "Guest Loop s'intègre au moment où le client est engagé : après une visite, une récompense ou une expérience réussie.",
+    text: "Guest Loop s'intègre au moment où le client est engagé : après une visite, un achat, une récompense ou une expérience réussie.",
   },
   {
     icon: "MSG",
@@ -77,7 +130,7 @@ const faqs = [
   {
     question: "Est-ce que Guest Loop est réservé aux restaurants ?",
     answer:
-      "La landing vise d'abord les restaurants, parce que le rythme des visites et des récompenses y est très naturel. Le même principe peut ensuite être adapté aux boulangeries, coffee shops, commerces de bouche et boutiques de proximité.",
+      "Non. Les premiers déploiements sont très orientés restaurants, parce que la fréquence de visite y rend la fidélisation naturelle. Guest Loop s'adapte aussi aux boulangeries, coffee shops, commerces de bouche, boutiques de vêtements et autres commerces de proximité.",
   },
   {
     question: "Mes clients doivent-ils installer une application ?",
@@ -99,6 +152,10 @@ const faqs = [
 export default function Home() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="site-header" aria-label="Navigation principale">
         <a className="brand" href="#top" aria-label="Guest Loop">
           <span className="brand-mark">G</span>
@@ -110,9 +167,17 @@ export default function Home() {
           <a href="#demo">Démo</a>
         </nav>
         <div className="header-actions" aria-label="Actions principales">
-          <a className="account-link" href={restaurantLoginUrl}>
-            <span className="label-full">Espace restaurateur</span>
-            <span className="label-short">Connexion</span>
+          <a
+            className="account-link"
+            href={commerceLoginUrl}
+            aria-label="Accéder à l'espace commerce Guest Loop"
+          >
+            <span className="label-full" aria-hidden="true">
+              Espace commerce
+            </span>
+            <span className="label-short" aria-hidden="true">
+              Connexion
+            </span>
           </a>
           <a className="header-cta" href={calendlyUrl}>
             Réserver une démo
@@ -122,12 +187,13 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">Fidélisation digitale pour restaurants</p>
+          <p className="eyebrow">Fidélisation digitale pour commerces de proximité</p>
           <h1>Le club fidélité qui donne une vraie raison de revenir.</h1>
           <p className="hero-lead">
             Guest Loop transforme votre QR code en programme de fidélité,
-            suivi client et canal de relance. Sans application à installer,
-            sans carte papier, sans complexité pour votre équipe.
+            suivi client et canal de relance pour restaurants, boutiques,
+            boulangeries et commerces locaux. Sans application à installer, sans
+            carte papier, sans complexité pour votre équipe.
           </p>
           <div className="hero-actions">
             <a className="primary-button" href={calendlyUrl}>
@@ -186,7 +252,7 @@ export default function Home() {
       <section className="section problem-section">
         <div className="section-intro">
           <p className="eyebrow">Le problème</p>
-          <h2>Vos clients aiment votre restaurant. Le sujet, c&apos;est de les revoir.</h2>
+          <h2>Vos clients aiment votre commerce. Le sujet, c&apos;est de les revoir.</h2>
         </div>
         <div className="pain-grid">
           {pains.map((pain) => (
@@ -217,7 +283,7 @@ export default function Home() {
       <section className="section product-section" id="produit">
         <div className="section-intro compact">
           <p className="eyebrow">Aperçu produit</p>
-          <h2>Un espace commerce pensé pour être utilisé pendant le service.</h2>
+          <h2>Un espace commerce pensé pour être utilisé pendant les moments de vente.</h2>
           <p>
             L&apos;interface reprend les codes d&apos;un SaaS opérationnel : rapide à lire,
             peu chargée, centrée sur les actions qui comptent.
@@ -234,7 +300,7 @@ export default function Home() {
               <span className="card-kicker">Pilotage</span>
               <h3>Suivez les visites et les récompenses en temps réel.</h3>
               <p>
-                Un restaurateur voit rapidement ce qui bouge : nouveaux clients,
+                Un commerçant voit rapidement ce qui bouge : nouveaux clients,
                 passages validés, récompenses obtenues ou utilisées.
               </p>
             </div>
@@ -258,7 +324,7 @@ export default function Home() {
               <span className="card-kicker">Différenciation</span>
               <h3>Le club Guest Loop ajoute de la valeur au programme.</h3>
               <p>
-                Au-delà de la récompense du restaurant, le club permet de créer un
+                Au-delà de la récompense de votre commerce, le club permet de créer un
                 effet d&apos;écosystème et de mutualiser des avantages.
               </p>
             </div>
@@ -318,7 +384,7 @@ export default function Home() {
             <span>Démonstration de l&apos;espace commerce</span>
           </div>
         </div>
-        <form className="lead-form" action={calendlyUrl}>
+        <aside className="lead-form" aria-label="Réserver une démo Guest Loop">
           <div className="form-heading">
             <span className="brand-mark small">G</span>
             <div>
@@ -326,27 +392,25 @@ export default function Home() {
               <span>Créneau de 30 minutes avec Overside</span>
             </div>
           </div>
-          <label>
-            Votre nom
-            <input name="name" placeholder="Ex. Camille Martin" />
-          </label>
-          <label>
-            Restaurant
-            <input name="business" placeholder="Ex. Restaurant Le Comptoir" />
-          </label>
-          <label>
-            Email ou téléphone
-            <input name="contact" placeholder="Pour préparer le rendez-vous" />
-          </label>
-          <button type="submit">Choisir un créneau Calendly</button>
-          <p>Le bouton ouvre le calendrier Overside pour réserver la démo.</p>
-        </form>
+          <div className="demo-points">
+            <span>Votre mécanique de fidélité</span>
+            <span>Les supports QR à installer</span>
+            <span>Le pilotage clients dans l&apos;espace commerce</span>
+          </div>
+          <a className="primary-button" href={calendlyUrl}>
+            Choisir un créneau Calendly
+          </a>
+          <p>
+            La réservation se fait directement dans le calendrier Overside, sans
+            formulaire intermédiaire.
+          </p>
+        </aside>
       </section>
 
       <section className="section faq" id="faq">
         <div className="section-intro">
           <p className="eyebrow">Questions fréquentes</p>
-          <h2>Ce que les restaurateurs demandent avant de se lancer.</h2>
+          <h2>Ce que les commerçants demandent avant de se lancer.</h2>
         </div>
         <div className="faq-list">
           {faqs.map((faq) => (
@@ -371,7 +435,13 @@ export default function Home() {
       </section>
 
       <footer>
-        <span>Guest Loop</span>
+        <div>
+          <span>Guest Loop</span>
+          <p>
+            Marque développée par{" "}
+            <a href={oversideUrl}>Overside, agence digitale à Aix-en-Provence</a>.
+          </p>
+        </div>
         <a href={calendlyUrl}>Prendre rendez-vous</a>
       </footer>
     </main>
