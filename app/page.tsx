@@ -1,4 +1,5 @@
 const calendlyUrl = "https://calendly.com/overside/30min";
+const restaurantLoginUrl = "https://guestloop.overside360.fr/";
 
 const proofItems = [
   {
@@ -108,9 +109,15 @@ export default function Home() {
           <a href="#produit">Produit</a>
           <a href="#demo">Démo</a>
         </nav>
-        <a className="header-cta" href={calendlyUrl}>
-          Réserver une démo
-        </a>
+        <div className="header-actions" aria-label="Actions principales">
+          <a className="account-link" href={restaurantLoginUrl}>
+            <span className="label-full">Espace restaurateur</span>
+            <span className="label-short">Connexion</span>
+          </a>
+          <a className="header-cta" href={calendlyUrl}>
+            Réserver une démo
+          </a>
+        </div>
       </header>
 
       <section className="hero" id="top">
@@ -127,7 +134,7 @@ export default function Home() {
               Planifier un rendez-vous de cadrage
             </a>
             <a className="secondary-button" href="#produit">
-              Voir l'expérience
+              Voir l&apos;expérience
             </a>
           </div>
           <div className="hero-trust" aria-label="Points clés">
@@ -179,7 +186,7 @@ export default function Home() {
       <section className="section problem-section">
         <div className="section-intro">
           <p className="eyebrow">Le problème</p>
-          <h2>Vos clients aiment votre restaurant. Le sujet, c'est de les revoir.</h2>
+          <h2>Vos clients aiment votre restaurant. Le sujet, c&apos;est de les revoir.</h2>
         </div>
         <div className="pain-grid">
           {pains.map((pain) => (
@@ -212,7 +219,7 @@ export default function Home() {
           <p className="eyebrow">Aperçu produit</p>
           <h2>Un espace commerce pensé pour être utilisé pendant le service.</h2>
           <p>
-            L'interface reprend les codes d'un SaaS opérationnel : rapide à lire,
+            L&apos;interface reprend les codes d&apos;un SaaS opérationnel : rapide à lire,
             peu chargée, centrée sur les actions qui comptent.
           </p>
         </div>
@@ -252,7 +259,7 @@ export default function Home() {
               <h3>Le club Guest Loop ajoute de la valeur au programme.</h3>
               <p>
                 Au-delà de la récompense du restaurant, le club permet de créer un
-                effet d'écosystème et de mutualiser des avantages.
+                effet d&apos;écosystème et de mutualiser des avantages.
               </p>
             </div>
           </article>
@@ -264,8 +271,8 @@ export default function Home() {
           <p className="eyebrow">Mise en place</p>
           <h2>Un lancement guidé, pas un logiciel lâché dans la nature.</h2>
           <p>
-            Le rendez-vous sert à cadrer le programme avant l'inscription :
-            récompense, supports QR, routine d'équipe et messages à envoyer.
+            Le rendez-vous sert à cadrer le programme avant l&apos;inscription :
+            récompense, supports QR, routine d&apos;équipe et messages à envoyer.
           </p>
         </div>
         <ol className="step-list">
@@ -283,8 +290,8 @@ export default function Home() {
 
       <section className="section differentiation">
         <div className="section-intro">
-          <p className="eyebrow">Pourquoi c'est différent</p>
-          <h2>Guest Loop garde la simplicité d'une carte de fidélité, avec la valeur d'un CRM.</h2>
+          <p className="eyebrow">Pourquoi c&apos;est différent</p>
+          <h2>Guest Loop garde la simplicité d&apos;une carte de fidélité, avec la valeur d&apos;un CRM.</h2>
         </div>
         <div className="diff-grid">
           {differentiators.map((item) => (
@@ -308,7 +315,7 @@ export default function Home() {
           <div className="conversion-list">
             <span>Audit rapide de votre fidélisation actuelle</span>
             <span>Proposition de mécanique de récompense</span>
-            <span>Démonstration de l'espace commerce</span>
+            <span>Démonstration de l&apos;espace commerce</span>
           </div>
         </div>
         <form className="lead-form" action={calendlyUrl}>
