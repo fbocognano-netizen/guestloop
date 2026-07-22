@@ -743,6 +743,35 @@ details {
   font-weight: 900;
 }
 
+.demo-points {
+  display: grid;
+  gap: 10px;
+}
+
+.demo-points span {
+  position: relative;
+  display: block;
+  padding: 14px 16px 14px 44px;
+  border: 1px solid rgba(15, 159, 95, 0.16);
+  border-radius: 16px;
+  background: #f0fff6;
+  color: var(--foreground);
+  font-weight: 900;
+}
+
+.demo-points span::before {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--green);
+  box-shadow: inset 0 0 0 5px #f0fff6;
+  content: "";
+  transform: translateY(-50%);
+}
+
 .lead-form {
   display: grid;
   gap: 16px;
@@ -797,6 +826,10 @@ details {
   width: 100%;
   cursor: pointer;
   font: inherit;
+}
+
+.lead-form .primary-button {
+  width: 100%;
 }
 
 .lead-form p {
@@ -860,6 +893,30 @@ footer {
   background: #101116;
   color: #fff;
   font-weight: 900;
+}
+
+footer div {
+  display: grid;
+  gap: 6px;
+}
+
+footer p {
+  margin: 0;
+  color: #b8bdc8;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+footer p a {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.42);
+  text-underline-offset: 4px;
+}
+
+footer p a:hover {
+  color: #ffb39a;
 }
 
 @media (max-width: 1180px) {
