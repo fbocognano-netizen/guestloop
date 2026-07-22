@@ -11,6 +11,8 @@ test("landing page contains Guest Loop conversion content", async () => {
 
   assert.match(layout, /Guest Loop - Fidelisation pour restaurants/);
   assert.match(page, /https:\/\/calendly\.com\/overside\/30min/);
+  assert.match(page, /https:\/\/guestloop\.overside360\.fr\//);
+  assert.match(page, /Espace restaurateur/);
   assert.match(page, /50\+/);
   assert.match(page, /restaurants déjà inscrits en France/);
   assert.match(page, /Le club fidélité qui donne une vraie raison de revenir/);
